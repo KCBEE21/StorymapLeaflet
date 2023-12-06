@@ -82,18 +82,31 @@ $(window).on('load', function() {
   /**
    * Loads the basemap and adds it to the map
    */
-  function addBaseMap() {
-    var basemap = trySetting('_tileProvider', 'Stamen.TonerLite');
-    L.tileLayer.provider(basemap, {
-      maxZoom: 18,
+
+const mapboxStyle = 'mapbox://styles/kennabobena/clop0pg28004m01rbel2gez2f';
+const accessToken = 'pk.eyJ1Ijoia2VubmFib2JlbmEiLCJhIjoiY2xvaXlvMnlzMDF5bTJqbXJkODA1b29mZCJ9.WUKNMHEkzOQmCPTzfmgd_g';
+
+function addBaseMap() {
+  L.tileLayer.provider('MapBox', {
+    id: mapboxStyle,
+    accessToken: accessToken,
+    piKey: trySetting('_tileProviderApiKey', ''),
+    apikey: trySetting('_tileProviderApiKey', ''),
+    key: trySetting('_tileProviderApiKey', '')
+  }).addTo(map);
+}
+//  function addBaseMap() {
+ //   var basemap = trySetting('_tileProvider', 'Stamen.TonerLite');
+  //  L.tileLayer.provider(basemap, {
+   //   maxZoom: 18,
       
       // Pass the api key to most commonly used parameters
-      apiKey: trySetting('_tileProviderApiKey', ''),
-      apikey: trySetting('_tileProviderApiKey', ''),
-      key: trySetting('_tileProviderApiKey', ''),
-      accessToken: trySetting('_tileProviderApiKey', '')
-    }).addTo(map);
-  }
+    //  apiKey: trySetting('_tileProviderApiKey', ''),
+    //  apikey: trySetting('_tileProviderApiKey', ''),
+    //  key: trySetting('_tileProviderApiKey', ''),
+     // accessToken: trySetting('_tileProviderApiKey', '')
+  //  }).addTo(map);
+  //}
 
   function initMap(options, chapters) {
     createDocumentSettings(options);
